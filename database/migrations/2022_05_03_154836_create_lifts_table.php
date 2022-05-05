@@ -27,6 +27,9 @@ return new class extends Migration {
 //                'Centra rajons', 'Latgales priekšpilsēta', 'Vidzemes priekšpilsēta', 'Ziemeļu priekšpilsēta',
 //                'Zemgales priekšpilsēta', 'Kurzemes rajons'
 //            ]);
+//            $table->string('street');
+//            $table->string('house');
+//            $table->string('entrance');
 //            $table->integer('floors_total');
 //            $table->integer('floors_serviced');
 //            $table->integer('load_capacity');
