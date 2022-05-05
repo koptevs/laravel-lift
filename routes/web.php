@@ -13,8 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+$name = 'Igor';
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/page', function () use ($name) {
+    return view('page', ['name'=> $name]);
 });
 
 Route::get('/dashboard', function () {
