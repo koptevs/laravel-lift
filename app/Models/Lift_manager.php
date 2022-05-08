@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Lift_manager extends Model
 {
     use HasFactory;
+
+    public function lifts()
+    {
+        return $this->hasMany(Lift::class);
+    }
 }
