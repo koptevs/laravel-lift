@@ -11,7 +11,13 @@ class Lift extends Model
 
     //protected $guarded = ['id']; //lara22
 
-//    protected $fillable =['reg_number', 'lift_type'];
+//    protected $fillable =
+//        [
+//            'lift_manager_id',
+//            'reg_number',
+//            'lift_type',
+//            'manufacturer_name'
+//        ];
 
 //    public function getRouteKeyName(): string
 //    {
@@ -20,7 +26,7 @@ class Lift extends Model
 
     public function lift_manager()
     {
-        return $this->belongsTo(Lift_manager::class);
+        return $this->belongsTo(LiftManager::class);
     }
 
 }

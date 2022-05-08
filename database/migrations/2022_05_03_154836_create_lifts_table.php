@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('reg_number', 128)->unique();
             $table->string('lift_type', 128);
             $table->string('manufacturer_name', 128);
-//            $table->integer('manufacture_year');
+            $table->integer('manufacture_year');
 //            $table->string('factory_number', 128);
 //            $table->string('installer', 128);
 //            $table->string('country', 128);
