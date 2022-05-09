@@ -15,6 +15,6 @@ class LiftSeeder extends Seeder
      */
     public function run()
     {
-        Lift::factory()->times(100)->create();
+        Lift::factory()->times(10)->create();
     }
 }
