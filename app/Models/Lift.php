@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use Database\Factories\LiftFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Lift extends Model
 {
     use HasFactory;
-
+//protected $table = 'lift'  ik - если хотим поменять дефолтную lifts
     //protected $guarded = ['id']; //lara22
 
 //    protected $fillable =
@@ -29,4 +30,8 @@ class Lift extends Model
         return $this->belongsTo(LiftManager::class);
     }
 
+    protected static function newFactory(): LiftFactory
+    {
+        return new LiftFactory();
+    }
 }
