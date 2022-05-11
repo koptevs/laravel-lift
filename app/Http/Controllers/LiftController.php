@@ -61,6 +61,7 @@ class LiftController extends Controller
     public function show(Lift $lift)
     {
         // single Lift page
+        return view('lifts.show', compact('lift'));
     }
 
     /**

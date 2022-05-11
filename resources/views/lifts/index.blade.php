@@ -17,12 +17,16 @@
                     <br>
                     @foreach($lifts as $lift)
                         <ul>
-                            <li>
-                                {{ $lift->reg_number }} - {{ $lift->lift_manager?->name }}
-                                <span>
-                                    <a href="{{ route('lifts.edit', $lift) }}">Edit</a>
-                                </span>
-                                <form method="post" action="{{ route('lifts.destroy', $lift) }}">
+                            <li class="text-2xl">
+                                <a href="{{ route('lifts.show', $lift) }}">{{ $lift->reg_number }}</a> - {{ $lift->lift_manager?->name }}
+
+                                <br>
+                                <a href="{{ route('lifts.edit', $lift) }}">
+                                    <x-button>
+                                        Edit
+                                    </x-button>
+                                </a>
+                                <form class="inline-block" method="post" action="{{ route('lifts.destroy', $lift) }}">
                                     @csrf
                                     @method('DELETE')
                                     <x-button-danger onclick="return confirm('Are you sure?')">
