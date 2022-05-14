@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('lift_managers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('address');
+            $table->string('reg_number');
             $table->timestamps();
         });
     }
