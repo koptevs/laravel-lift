@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             LiftSeeder::class,
             AdminSeeder::class,
+            LiftManagerSeeder::class
         ]);
 
         //LU

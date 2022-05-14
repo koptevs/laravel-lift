@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Lift;
+use App\Models\LiftManager;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class LiftSeeder extends Seeder
+class LiftManagerSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class LiftSeeder extends Seeder
      */
     public function run()
     {
-        Lift::factory()->times(100)->create();
+        LiftManager::factory()->times(5)->create();
     }
 }
