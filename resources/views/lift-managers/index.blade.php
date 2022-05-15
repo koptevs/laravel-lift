@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-4xl text-gray-800 leading-tight text-center">
-            {{ __('All Lifts') }} <br>
+            {{ __('All Lift Managers') }}
         </h2>
-        <a href="{{ route('lifts.create') }}">
+        <a href="{{ route('lift-managers.create') }}">
             <x-button>
-                Add New Lift
+                Add New Lift Manager
             </x-button>
         </a>
     </x-slot>
@@ -15,28 +15,30 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    @foreach($lifts as $lift)
-                        <div class="mt-2 mb-4 flex justify-between">
-                            <div id="lift-data" class="text-xl">
-                                <a href="{{ route('lifts.show', $lift) }}">
-                                    {{ $lift->reg_number }}
-                                </a>
-                                - {{ $lift->lift_manager?->name }}
+                    @foreach($lift_managers as $lift_manager)
 
+                        <div class="mt-2 mb-4 flex justify-between">
+                            <div id="lift-manager-data" class="text-xl">
+                                <a href="{{ route('lift-managers.show', $lift_manager) }}">
+                                    {{ $lift_manager->name }}</a>
                             </div>
+
                             <div id="controls">
 
-                                <a href="{{ route('lifts.show', $lift) }}">
+                                <a href="{{ route('lift-managers.show', $lift_manager) }}">
                                     <x-button-info>
                                         Show details
                                     </x-button-info>
                                 </a>
-                                <a href="{{ route('lifts.edit', $lift) }}">
+
+                                <a href="{{ route('lift-managers.edit', $lift_manager) }}">
                                     <x-button>
                                         Edit
                                     </x-button>
                                 </a>
-                                <form class="inline-block" method="post" action="{{ route('lifts.destroy', $lift) }}">
+
+                                <form class="inline-block" method="post"
+                                      action="{{ route('lift-managers.destroy', $lift_manager) }}">
                                     @csrf
                                     @method('DELETE')
                                     <x-button-danger onclick="return confirm('Are you sure?')">
@@ -46,7 +48,6 @@
                             </div>
                         </div>
                         <hr>
-
                     @endforeach
                 </div>
             </div>

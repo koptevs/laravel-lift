@@ -16,6 +16,31 @@
                         <br />
                         <input type="text" name="reg_number" value="{{ $lift->reg_number }}">
                         <br />
+                        Lift type:
+                        <br />
+                        <input type="text" name="lift_type" value="{{ $lift->lift_type }}">
+                        <br />
+                        Manufacturer:
+                        <br />
+                        <input type="text" name="manufacturer_name" value="{{ $lift->manufacturer_name }}">
+                        <br />
+                        Year:
+                        <br />
+                        <input type="text" name="manufacture_year" value="{{ $lift->manufacture_year }}">
+                        <br />
+                        Lift manager:
+                        <br />
+{{--                        <input type="text" name="lift_manager_id" value="{{ $lift->lift_manager_id }}">--}}
+
+
+                        <select name="lift_manager_id">
+                            @foreach($lift_managers as $lift_manager)
+                                <option value="{{ $lift_manager->id }}" @selected($lift_manager->id == $lift->lift_manager_id) > {{ $lift_manager->name }}</option>
+                            @endforeach
+
+                        </select>
+                        <br />
+
                         <br />
                         <x-button>
                             Save
