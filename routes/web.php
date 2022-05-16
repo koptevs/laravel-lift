@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::post('/', 'store')->name('store');
                 Route::get('/{lift_manager}', 'show')->name('show');
                 Route::get('/{lift_manager}/edit', 'edit')->name('edit');
-                Route::post('/{lift_manager}/edit', 'update')->name('update');
+                Route::match(['put', 'patch'],'/{lift_manager}', 'update')->name('update');
                 Route::delete('/{lift_manager}', 'destroy')->name('destroy');
             });
         });
