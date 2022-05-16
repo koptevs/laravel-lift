@@ -28,7 +28,8 @@ class LiftController extends Controller
     public function create()
     {
         // create form
-        return view('lifts.create');
+        $lift_managers = LiftManager::all();
+        return view('lifts.create', compact('lift_managers'));
     }
 
     /**

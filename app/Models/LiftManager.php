@@ -9,6 +9,13 @@ class LiftManager extends Model
 {
     use HasFactory;
 
+    protected $fillable =
+        [
+            'name',
+            'address',
+            'reg_number',
+        ];
+
     public function lifts()
     {
         return $this->hasMany(Lift::class);

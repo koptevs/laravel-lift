@@ -16,6 +16,7 @@ class LiftManagerController extends Controller
     public function index(): View
     {
         $lift_managers = LiftManager::all();
+
         return view('lift-managers.index', compact('lift_managers'));
     }
 
@@ -53,10 +54,11 @@ class LiftManagerController extends Controller
 
         LiftManager::create([
             'name'       => $request->input('name'),
+            'address'    => $request->input('address'),
             'reg_number' => $request->input('reg_number')
         ]);
 
-        return  redirect()->route('lift_managers.index');
+        return redirect()->route('lift-managers.index');
     }
 
     /**
@@ -97,11 +99,12 @@ class LiftManagerController extends Controller
     public function update(Request $request, LiftManager $lift_manager)
     {
         $lift_manager->update([
-            'name'=> $request->input('name'),
-            'reg_number'=> $request->input('reg_number'),
+            'name'       => $request->input('name'),
+            'address'    => $request->input('address'),
+            'reg_number' => $request->input('reg_number'),
         ]);
 
-        return  redirect()->route('lift-managers.index');
+        return redirect()->route('lift-managers.index');
     }
 
     /**
@@ -115,7 +118,7 @@ class LiftManagerController extends Controller
     {
         $lift_manager->delete();
 
-        return  redirect()->route('lift-managers.index');
+        return redirect()->route('lift-managers.index');
 
     }
 }

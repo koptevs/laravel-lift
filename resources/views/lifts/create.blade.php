@@ -12,15 +12,9 @@
                     <form method="post" action="{{ route('lifts.store')  }}">
                         @csrf
 
-                        <br />
                         Reg. Number:
                         <br />
                         <input type="text" name="reg_number">
-                        <br />
-
-                        Lift manager ID:
-                        <br />
-                        <input type="text" name="lift_manager_id">
                         <br />
 
                         Lift type:
@@ -28,7 +22,7 @@
                         <input type="text" name="lift_type">
                         <br />
 
-                        Manufacturer name:
+                        Manufacturer:
                         <br />
                         <input type="text" name="manufacturer_name">
                         <br />
@@ -37,7 +31,18 @@
                         <br />
                         <input type="text" name="manufacture_year">
                         <br />
+
+                        Lift manager:
                         <br />
+
+                        <select name="lift_manager_id">
+                            @foreach($lift_managers as $lift_manager)
+                                <option value="{{ $lift_manager->id }}"> {{ $lift_manager->name }}</option>
+                            @endforeach
+
+                        </select>
+                        <br>
+                        <br>
                         <x-button>
                             Save
                         </x-button>

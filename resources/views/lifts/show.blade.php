@@ -19,6 +19,12 @@
                     Lift manager: {{ $lift->lift_manager->name }}<br>
                     Lift type.: {{ $lift->lift_type }}<br>
                     Manufactured: {{ $lift->manufacture_year }}
+                    <br><br>
+                    <a href="{{ route('lifts.edit', $lift) }}">
+                        <x-button>
+                            Edit
+                        </x-button>
+                    </a>
                 </div>
             </div>
         </div>
