@@ -40,7 +40,7 @@ class LiftController extends Controller
      */
     public function store(Request $request)
     {
-        // submit action for the form
+        // submit action for the create form
         Lift::create([
             'reg_number'        => $request->input('reg_number'),
             'lift_manager_id'   => $request->input('lift_manager_id'),
