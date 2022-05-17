@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lift;
 use App\Models\LiftManager;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class LiftController extends Controller
 {
@@ -13,11 +14,11 @@ class LiftController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
-        $lifts = Lift::with('lift_manager')->get();
+        $lifts = Lift::with('liftManager')->get();
 
-        return view('lifts.index', compact('lifts'));
+        return view('lifts.index', ['lifts' => $lifts]);
     }
 
     /**
@@ -28,8 +29,9 @@ class LiftController extends Controller
     public function create()
     {
         // create form
-        $lift_managers = LiftManager::all();
-        return view('lifts.create', compact('lift_managers'));
+        $liftManagers = LiftManager::all();
+
+        return view('lifts.create', ['liftManagers' => $liftManagers]);
     }
 
     /**
@@ -43,11 +45,11 @@ class LiftController extends Controller
     {
         // submit action for the create form
         Lift::create([
-            'reg_number'        => $request->input('reg_number'),
-            'lift_manager_id'   => $request->input('lift_manager_id'),
-            'lift_type'         => $request->input('lift_type'),
+            'reg_number' => $request->input('reg_number'),
+            'lift_manager_id' => $request->input('lift_manager_id'),
+            'lift_type' => $request->input('lift_type'),
             'manufacturer_name' => $request->input('manufacturer_name'),
-            'manufacture_year'  => $request->input('manufacture_year'),
+            'manufacture_year' => $request->input('manufacture_year'),
         ]);
 
         return redirect()->route('lifts.index');
@@ -64,7 +66,7 @@ class LiftController extends Controller
     public function show(Lift $lift)
     {
         // single Lift page
-        return view('lifts.show', compact('lift'));
+        return view('lifts.show', ['lift' => $lift]);
     }
 
     /**
@@ -77,8 +79,9 @@ class LiftController extends Controller
     public function edit(Lift $lift)
     {
         // edit form
-        $lift_managers = LiftManager::all();
-        return view('lifts.edit', compact('lift', 'lift_managers'));
+        $liftManagers = LiftManager::all();
+
+        return view('lifts.edit', ['lift' => $lift, 'liftManagers' => $liftManagers]);
     }
 
     /**
@@ -93,11 +96,11 @@ class LiftController extends Controller
     {
         // action for edit form
         $lift->update([
-            'reg_number'        => $request->input('reg_number'),
-            'lift_manager_id'   => $request->input('lift_manager_id'),
-            'lift_type'         => $request->input('lift_type'),
+            'reg_number' => $request->input('reg_number'),
+            'lift_manager_id' => $request->input('lift_manager_id'),
+            'lift_type' => $request->input('lift_type'),
             'manufacturer_name' => $request->input('manufacturer_name'),
-            'manufacture_year'  => $request->input('manufacture_year'),
+            'manufacture_year' => $request->input('manufacture_year'),
 
 
         ]);

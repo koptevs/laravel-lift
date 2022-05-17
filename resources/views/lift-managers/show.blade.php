@@ -14,11 +14,11 @@
                         </h2>
                     </a>
                     <br>
-                    Name: {{ $lift_manager->name }} <br>
-                    Address: {{ $lift_manager->address }} <br>
-                    Reg . number: {{ $lift_manager->reg_number }}
+                    Name: {{ $liftManager->name }} <br>
+                    Address: {{ $liftManager->address }} <br>
+                    Reg . number: {{ $liftManager->reg_number }}
                     <br><br>
-                    <a href="{{ route('lift-managers.edit', $lift_manager) }}">
+                    <a href="{{ route('lift-managers.edit', $liftManager) }}">
                         <x-button>
                             Edit
                         </x-button>

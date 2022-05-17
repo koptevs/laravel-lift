@@ -18,11 +18,11 @@ class LiftFactory extends Factory
     public function definition()
     {
         return [
-            'lift_manager_id'   => $this->faker->randomElement(['1', '2', '3', '4', '5']),
-            'reg_number'        => $this->faker->unique()->numerify('4CL######'),
-            'lift_type'         => 'electric',
+            'lift_manager_id' => $this->faker->randomElement(['1', '2', '3', '4', '5']),
+            'reg_number' => $this->faker->unique()->numerify('4CL######'),
+            'lift_type' => 'electric',
             'manufacturer_name' => $this->faker->randomElement(['KONE', 'Shindler', 'Mogilev', 'Orona', 'OTIS']),
-            'manufacture_year'  => $this->faker->year('-10years'),
+            'manufacture_year' => $this->faker->year('-10years'),
         ];
     }
 }

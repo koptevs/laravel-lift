@@ -13,31 +13,31 @@
                         @csrf
 
                         Reg. Number:
-                        <br />
+                        <br/>
                         <input type="text" name="reg_number">
-                        <br />
+                        <br/>
 
                         Lift type:
-                        <br />
+                        <br/>
                         <input type="text" name="lift_type">
-                        <br />
+                        <br/>
 
                         Manufacturer:
-                        <br />
+                        <br/>
                         <input type="text" name="manufacturer_name">
-                        <br />
+                        <br/>
 
                         Manufacture year:
-                        <br />
+                        <br/>
                         <input type="text" name="manufacture_year">
-                        <br />
+                        <br/>
 
                         Lift manager:
-                        <br />
+                        <br/>
 
                         <select name="lift_manager_id">
-                            @foreach($lift_managers as $lift_manager)
-                                <option value="{{ $lift_manager->id }}"> {{ $lift_manager->name }}</option>
+                            @foreach($liftManagers as $liftManager)
+                                <option value="{{ $liftManager->id }}"> {{ $liftManager->name }}</option>
                             @endforeach
 
                         </select>

@@ -21,7 +21,7 @@
                                 <a href="{{ route('lifts.show', $lift) }}">
                                     {{ $lift->reg_number }}
                                 </a>
-                                - {{ $lift->lift_manager?->name }}
+                                - {{ $lift->liftManager->name }}
 
                             </div>
                             <div id="controls">

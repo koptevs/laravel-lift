@@ -23,9 +23,9 @@ class LiftManagerFactory extends Factory
                 'DzIKS Gudgrība',
                 'SIA Naudu Pumpis',
                 'AS Figas',
-                ]),
-            'address' =>  $this->faker->address(),
-            'reg_number' =>  $this->faker->unique()->numerify('###########')
+            ]),
+            'address' => $this->faker->address(),
+            'reg_number' => $this->faker->unique()->numerify('###########')
         ];
     }
 }

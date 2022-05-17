@@ -34,10 +34,10 @@ Route::middleware(['auth'])->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('/create', 'create')->name('create');
                 Route::post('/', 'store')->name('store');
-                Route::get('/{lift_manager}', 'show')->name('show');
-                Route::get('/{lift_manager}/edit', 'edit')->name('edit');
-                Route::match(['put', 'patch'],'/{lift_manager}', 'update')->name('update');
-                Route::delete('/{lift_manager}', 'destroy')->name('destroy');
+                Route::get('/{liftManager}', 'show')->name('show');
+                Route::get('/{liftManager}/edit', 'edit')->name('edit');
+                Route::match(['put', 'patch'], '/{liftManager}', 'update')->name('update');
+                Route::delete('/{liftManager}', 'destroy')->name('destroy');
             });
         });
     });

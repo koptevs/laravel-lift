@@ -15,9 +15,9 @@ class LiftManagerController extends Controller
      */
     public function index(): View
     {
-        $lift_managers = LiftManager::all();
+        $liftManagers = LiftManager::all();
 
-        return view('lift-managers.index', compact('lift_managers'));
+        return view('lift-managers.index', ['liftManagers' => $liftManagers]);
     }
 
     /**
@@ -27,9 +27,9 @@ class LiftManagerController extends Controller
      */
     public function create(): View
     {
-        $lift_managers = LiftManager::all();
+        $liftManagers = LiftManager::all();
 
-        return view('lift-managers.create', compact('lift_managers'));
+        return view('lift-managers.create', ['liftManagers' => $liftManagers]);
     }
 
     /**
@@ -53,8 +53,8 @@ class LiftManagerController extends Controller
         // either a fillable or guarded property on your model class.
 
         LiftManager::create([
-            'name'       => $request->input('name'),
-            'address'    => $request->input('address'),
+            'name' => $request->input('name'),
+            'address' => $request->input('address'),
             'reg_number' => $request->input('reg_number')
         ]);
 
@@ -68,9 +68,9 @@ class LiftManagerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(LiftManager $lift_manager): View
+    public function show(LiftManager $liftManager): View
     {
-        return view('lift-managers.show', compact('lift_manager'));
+        return view('lift-managers.show', ['liftManager' => $liftManager]);
     }
 
     /**
@@ -80,11 +80,11 @@ class LiftManagerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(LiftManager $lift_manager): View
+    public function edit(LiftManager $liftManager): View
     {
 
 //        return view('lift-managers.edit', compact('lift_manager'));
-        return view('lift-managers.edit', compact('lift_manager'));
+        return view('lift-managers.edit', ['liftManager' => $liftManager]);
 
     }
 
@@ -96,11 +96,11 @@ class LiftManagerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LiftManager $lift_manager)
+    public function update(Request $request, LiftManager $liftManager)
     {
-        $lift_manager->update([
-            'name'       => $request->input('name'),
-            'address'    => $request->input('address'),
+        $liftManager->update([
+            'name' => $request->input('name'),
+            'address' => $request->input('address'),
             'reg_number' => $request->input('reg_number'),
         ]);
 
@@ -114,9 +114,9 @@ class LiftManagerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LiftManager $lift_manager)
+    public function destroy(LiftManager $liftManager)
     {
-        $lift_manager->delete();
+        $liftManager->delete();
 
         return redirect()->route('lift-managers.index');
 

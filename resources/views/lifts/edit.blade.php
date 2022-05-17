@@ -13,39 +13,40 @@
                         @method('PUT')
                         @csrf
                         Reg. Number:
-                        <br />
+                        <br/>
                         <input type="text" name="reg_number" value="{{ $lift->reg_number }}">
-                        <br />
+                        <br/>
 
                         Lift type:
-                        <br />
+                        <br/>
                         <input type="text" name="lift_type" value="{{ $lift->lift_type }}">
-                        <br />
+                        <br/>
 
                         Manufacturer:
-                        <br />
+                        <br/>
                         <input type="text" name="manufacturer_name" value="{{ $lift->manufacturer_name }}">
-                        <br />
+                        <br/>
 
                         Manufacture year:
-                        <br />
+                        <br/>
                         <input type="text" name="manufacture_year" value="{{ $lift->manufacture_year }}">
-                        <br />
+                        <br/>
 
                         Lift manager:
-                        <br />
-{{--                        <input type="text" name="lift_manager_id" value="{{ $lift->lift_manager_id }}">--}}
+                        <br/>
+                        {{--                        <input type="text" name="lift_manager_id" value="{{ $lift->lift_manager_id }}">--}}
 
 
                         <select name="lift_manager_id">
-                            @foreach($lift_managers as $lift_manager)
-                                <option value="{{ $lift_manager->id }}" @selected($lift_manager->id == $lift->lift_manager_id) > {{ $lift_manager->name }}</option>
+                            @foreach($liftManagers as $liftManager)
+                                <option value="{{ $liftManager->id }}" @selected($liftManager->id ==
+                                    $lift->lift_manager_id) > {{ $liftManager->name }}</option>
                             @endforeach
 
                         </select>
-                        <br />
+                        <br/>
 
-                        <br />
+                        <br/>
                         <x-button>
                             Save
                         </x-button>

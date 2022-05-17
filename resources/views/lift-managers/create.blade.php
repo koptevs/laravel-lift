@@ -12,23 +12,23 @@
                         @csrf
 
                         Lift manager name:
-                        <br />
+                        <br/>
                         <input type="text" name="name">
-                        <br />
+                        <br/>
 
-                        <br />
+                        <br/>
                         Address:
-                        <br />
+                        <br/>
                         <input type="text" name="address">
-                        <br />
+                        <br/>
 
-                        <br />
+                        <br/>
                         Reg. Number:
-                        <br />
+                        <br/>
                         <input type="text" name="reg_number">
-                        <br />
+                        <br/>
 
-                        <br />
+                        <br/>
                         <x-button>
                             Save
                         </x-button>

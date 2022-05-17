@@ -27,7 +27,7 @@ class Lift extends Model
 //        return 'reg_number'; //lara23 read!
 //    }
 
-    public function lift_manager(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function liftManager(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(LiftManager::class);
     }

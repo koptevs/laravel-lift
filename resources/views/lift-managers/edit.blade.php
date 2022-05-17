@@ -1,34 +1,34 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit Lift Manager') }} - {{ $lift_manager->name }}
+            {{ __('Edit Lift Manager') }} - {{ $liftManager->name }}
         </h2>
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form method="post" action="{{ route('lift-managers.update', $lift_manager)  }}">
+                    <form method="post" action="{{ route('lift-managers.update', $liftManager)  }}">
                         @method('PUT')
                         @csrf
                         Lift manager name:
-                        <br />
-                        <input type="text" name="name" value="{{ $lift_manager->name }}">
-                        <br />
+                        <br/>
+                        <input type="text" name="name" value="{{ $liftManager->name }}">
+                        <br/>
 
-                        <br />
+                        <br/>
                         Address:
-                        <br />
-                        <input type="text" name="address" value="{{ $lift_manager->address }}">
-                        <br />
+                        <br/>
+                        <input type="text" name="address" value="{{ $liftManager->address }}">
+                        <br/>
 
-                        <br />
+                        <br/>
                         Reg. Number:
-                        <br />
-                        <input type="text" name="reg_number" value="{{ $lift_manager->reg_number }}">
-                        <br />
+                        <br/>
+                        <input type="text" name="reg_number" value="{{ $liftManager->reg_number }}">
+                        <br/>
 
-                        <br />
+                        <br/>
                         <x-button>
                             Save
                         </x-button>
