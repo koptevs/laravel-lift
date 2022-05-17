@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lift;
+use App\Models\LiftManager;
 use Illuminate\Http\Request;
 
 class LiftController extends Controller
@@ -27,28 +28,29 @@ class LiftController extends Controller
     public function create()
     {
         // create form
-        return view('lifts.create');
+        $lift_managers = LiftManager::all();
+        return view('lifts.create', compact('lift_managers'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        // submit action for the form
+        // submit action for the create form
         Lift::create([
-            'reg_number' => $request->input('reg_number'),
-            'lift_manager_id' => $request->input('lift_manager_id'),
-            'lift_type' => $request->input('lift_type'),
+            'reg_number'        => $request->input('reg_number'),
+            'lift_manager_id'   => $request->input('lift_manager_id'),
+            'lift_type'         => $request->input('lift_type'),
             'manufacturer_name' => $request->input('manufacturer_name'),
-            'manufacture_year' => $request->input('manufacture_year'),
-
+            'manufacture_year'  => $request->input('manufacture_year'),
         ]);
 
-        return  redirect()->route('lifts.index');
+        return redirect()->route('lifts.index');
 
     }
 
@@ -56,6 +58,7 @@ class LiftController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Lift  $lift
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Lift $lift)
@@ -68,12 +71,14 @@ class LiftController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Lift  $lift
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Lift $lift)
     {
         // edit form
-        return view('lifts.edit', compact('lift'));
+        $lift_managers = LiftManager::all();
+        return view('lifts.edit', compact('lift', 'lift_managers'));
     }
 
     /**
@@ -81,22 +86,30 @@ class LiftController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Lift  $lift
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Lift $lift)
     {
         // action for edit form
         $lift->update([
-            'reg_number' => $request->input('reg_number'),
+            'reg_number'        => $request->input('reg_number'),
+            'lift_manager_id'   => $request->input('lift_manager_id'),
+            'lift_type'         => $request->input('lift_type'),
+            'manufacturer_name' => $request->input('manufacturer_name'),
+            'manufacture_year'  => $request->input('manufacture_year'),
+
+
         ]);
 
-        return  redirect()->route('lifts.index');
+        return redirect()->route('lifts.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Lift  $lift
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Lift $lift)
@@ -104,7 +117,7 @@ class LiftController extends Controller
         // delete Lift
         $lift->delete();
 
-        return  redirect()->route('lifts.index');
+        return redirect()->route('lifts.index');
 
     }
 }

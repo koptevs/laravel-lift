@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\LiftController;
+use \App\Http\Controllers\LiftManagerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +26,21 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::resource('lifts', \App\Http\Controllers\LiftController::class)->middleware('is_admin');
+    Route::resource('lifts', LiftController::class)->middleware('is_admin');
+
+    Route::controller(LiftManagerController::class)->group(function () {
+        Route::prefix('lift-managers')->group(function () {
+            Route::name('lift-managers.')->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+                Route::post('/', 'store')->name('store');
+                Route::get('/{lift_manager}', 'show')->name('show');
+                Route::get('/{lift_manager}/edit', 'edit')->name('edit');
+                Route::match(['put', 'patch'],'/{lift_manager}', 'update')->name('update');
+                Route::delete('/{lift_manager}', 'destroy')->name('destroy');
+            });
+        });
+    });
 
 });
 
