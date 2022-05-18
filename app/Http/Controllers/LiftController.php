@@ -26,8 +26,9 @@ class LiftController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create():View
     {
+//        app()->setLocale('lv');
         // create form
         $liftManagers = LiftManager::all();
 
@@ -43,13 +44,21 @@ class LiftController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedRequestData = $request->validate([
+//            'reg_number' => ['bail', 'required', 'unique:lifts'],
+            'reg_number' => ['required', 'unique:lifts'],
+            'lift_manager_id' => ['required'],
+            'lift_type' => ['required'],
+            'manufacture_year' => ['required'],
+        ]);
+//        dd($validatedRequestData);
         // submit action for the create form
         Lift::create([
-            'reg_number' => $request->input('reg_number'),
-            'lift_manager_id' => $request->input('lift_manager_id'),
-            'lift_type' => $request->input('lift_type'),
+            'reg_number' => $validatedRequestData['reg_number'],
+            'lift_manager_id' => $validatedRequestData['lift_manager_id'],
+            'lift_type' => $validatedRequestData['lift_type'],
+            'manufacture_year' => $validatedRequestData['manufacture_year'],
             'manufacturer_name' => $request->input('manufacturer_name'),
-            'manufacture_year' => $request->input('manufacture_year'),
         ]);
 
         return redirect()->route('lifts.index');
