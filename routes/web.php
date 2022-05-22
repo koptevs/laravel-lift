@@ -23,7 +23,10 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('dashboard', [
+            'lifts_total' => App\Models\Lift::all()->count(),
+            'lift_managers_total' => App\Models\LiftManager::get()->count()
+            ]);
     })->name('dashboard');
 
     Route::resource('lifts', LiftController::class)->middleware('is_admin');
