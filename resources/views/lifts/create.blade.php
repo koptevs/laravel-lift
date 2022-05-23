@@ -10,50 +10,88 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
+
                     <form method="post" action="{{ route('lifts.store')  }}">
                         @csrf
+                        <div class="grid grid-cols md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div>
+                                <label for="reg_number">Reg. Number:</label><br>
+                                <input type="text" id="reg_number" class="w-full" name="reg_number"
+                                       class="@error('reg_number') text-indigo-600 @enderror">
+                                @error('reg_number')
+                                <div class="text-red-600">{{ $message }}</div>
+                                @enderror
+                            </div>
 
-                        Reg. Number:
-                        <br/>
-                        <input type="text" name="reg_number" class="@error('reg_number') text-indigo-600 @enderror">
-                        <br/>
-                        @error('reg_number')
-                        <div class="text-red-600">{{ $message }}</div>
-                        @enderror
+                            <div>
+                                <label for="lift_type">Lift type:</label><br>
+                                <input id="lift_type" class="w-full" type="text" name="lift_type">
+                                @error('lift_type')
+                                <div class="text-red-600">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="manufacturer_name">Manufacturer:</label><br>
+                                <input id="manufacturer_name" class="w-full" type="text" name="manufacturer_name">
+                                <br>
+                                @error('manufacturer_name')
+                                <div class="text-red-600">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="manufacture_year">Manufacture year:</label><br>
+                                <input id="manufacture_year" class="w-full" type="text" name="manufacture_year">
+                                <br/>
+                                @error('manufacture_year')
+                                <div class="text-red-600">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
+                                <label for="city"> City:</label><br>
+                                <input id="city" class="w-full" type="text" name="city">
+                                <br/>
+                                @error('city')
+                                <div class="text-red-600">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
 
-                        Lift type:
-                        <br/>
-                        <input type="text" name="lift_type">
-                        <br/>
-                        @error('lift_type')
-                        <div class="text-red-600">{{ $message }}</div>
-                        @enderror
+                                <label for="street"> Street:</label><br>
+                                <input id="street" class="w-full" type="text" name="street">
+                                <br/>
+                                @error('street')
+                                <div class="text-red-600">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
 
-                        Manufacturer:
-                        <br/>
-                        <input type="text" name="manufacturer_name">
-                        <br/>
-                        @error('manufacturer_name')
-                        <div class="text-red-600">{{ $message }}</div>
-                        @enderror
+                                <label for="house"> House:</label><br>
+                                <input id="house" class="w-full" type="text" name="house">
+                                <br/>
+                                @error('house')
+                                <div class="text-red-600">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
 
-                        Manufacture year:
-                        <br/>
-                        <input type="text" name="manufacture_year">
-                        <br/>
-                        @error('manufacture_year')
-                        <div class="text-red-600">{{ $message }}</div>
-                        @enderror
+                                <label for="entrance"> Entrance:</label><br>
+                                <input id="entrance" class="w-full" type="text" name="entrance">
+                                <br/>
+                                @error('entrance')
+                                <div class="text-red-600">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div>
 
-                        Lift manager:
-                        <br/>
+                                <label for="lift_manager_id"> Lift manager:</label><br>
+                                <select id="lift_manager_id" class="w-full" name="lift_manager_id">
+                                    @foreach($liftManagers as $liftManager)
+                                        <option value="{{ $liftManager->id }}"> {{ $liftManager->name }}</option>
+                                    @endforeach
 
-                        <select name="lift_manager_id">
-                            @foreach($liftManagers as $liftManager)
-                                <option value="{{ $liftManager->id }}"> {{ $liftManager->name }}</option>
-                            @endforeach
-
-                        </select>
+                                </select>
+                            </div>
+                        </div>
                         <br>
                         <br>
                         <x-button>

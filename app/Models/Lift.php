@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Lift extends Model
 {
     use HasFactory;
+
 //protected $table = 'lift'  ik - если хотим поменять дефолтную lifts
     //protected $guarded = ['id']; //lara22
 //    protected $primaryKey = 'reg_number';
@@ -19,7 +20,11 @@ class Lift extends Model
             'reg_number',
             'lift_type',
             'manufacturer_name',
-            'manufacture_year'
+            'manufacture_year',
+            'city',
+            'street',
+            'house',
+            'entrance'
         ];
 
 //    public function getRouteKeyName(): string

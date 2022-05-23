@@ -59,6 +59,10 @@ class LiftController extends Controller
             'lift_type' => $validatedRequestData['lift_type'],
             'manufacture_year' => $validatedRequestData['manufacture_year'],
             'manufacturer_name' => $request->input('manufacturer_name'),
+            'city' => $request->input('city'),
+            'street' => $request->input('street'),
+            'house' => $request->input('house'),
+            'entrance' => $request->input('entrance'),
         ]);
 
         return redirect()->route('lifts.index');
