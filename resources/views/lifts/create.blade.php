@@ -16,8 +16,7 @@
                         <div class="grid grid-cols md:grid-cols-2 lg:grid-cols-4 gap-4">
                             <div>
                                 <label for="reg_number">Reg. Number:</label><br>
-                                <input type="text" id="reg_number" class="w-full" name="reg_number"
-                                       class="@error('reg_number') text-indigo-600 @enderror">
+                                <input type="text" id="reg_number" class="w-full" name="reg_number">
                                 @error('reg_number')
                                 <div class="text-red-600">{{ $message }}</div>
                                 @enderror
