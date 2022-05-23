@@ -20,17 +20,17 @@ return new class extends Migration
             $table->string('lift_type', 128);
             $table->string('manufacturer_name', 128);
             $table->integer('manufacture_year');
+            $table->string('city', 128);
+            $table->string('street');
+            $table->string('house');
+            $table->string('entrance');
 //            $table->string('factory_number', 128);
 //            $table->string('installer', 128);
 //            $table->string('country', 128);
-//            $table->string('city', 128);
 //            $table->enum('city_region', [
 //                'Centra rajons', 'Latgales priekšpilsēta', 'Vidzemes priekšpilsēta', 'Ziemeļu priekšpilsēta',
 //                'Zemgales priekšpilsēta', 'Kurzemes rajons'
 //            ]);
-//            $table->string('street');
-//            $table->string('house');
-//            $table->string('entrance');
 //            $table->integer('floors_total');
 //            $table->integer('floors_serviced');
 //            $table->integer('load_capacity');

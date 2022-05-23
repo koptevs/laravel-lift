@@ -23,6 +23,10 @@ class LiftFactory extends Factory
             'lift_type' => 'electric',
             'manufacturer_name' => $this->faker->randomElement(['KONE', 'Shindler', 'Mogilev', 'Orona', 'OTIS']),
             'manufacture_year' => $this->faker->year('-10years'),
+            'city' => $this->faker->randomElement(['Rīga', 'Ventspils', 'Rezekne', 'Jūrmala']),
+            'street' => $this->faker->streetName,
+            'house' => $this->faker->numberBetween(1, 100),
+            'entrance' => $this->faker->randomElement(['I', 'II', 'III', 'IV'])
         ];
     }
 }

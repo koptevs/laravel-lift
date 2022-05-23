@@ -16,7 +16,10 @@
                     </a>
                     <br>
                     Reg. Nr.: {{ $lift->reg_number }}<br>
-                    Lift manager: {{ $lift->liftManager->name }}<br>
+                    <span class="text-sm">Adrese: </span>{{ $lift->city }},
+                    {{ $lift->street }} iela {{ $lift->house }} / {{ $lift->entrance }}<br>
+
+                    Lift manager: {{ $lift->liftManager->name }}, reg.nr. {{ $lift->liftManager->reg_number }}<br>
                     Lift type.: {{ $lift->lift_type }}<br>
                     Manufactured: {{ $lift->manufacture_year }}
                     <br><br>

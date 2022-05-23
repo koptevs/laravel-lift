@@ -18,10 +18,13 @@
                     @foreach($lifts as $lift)
                         <div class="mt-2 mb-4 flex justify-between">
                             <div id="lift-data" class="text-xl">
-                                <a href="{{ route('lifts.show', $lift) }}">
-                                    {{ $lift->reg_number }}
-                                </a>
-                                - {{ $lift->liftManager->name }}
+
+                                <span class="text-sm">Reģistrācijas numurs: </span>
+                                <span class="text-lg font-bold">{{ $lift->reg_number }}</span>
+                                <br>
+                                {{--                                - {{ $lift->liftManager->name }}--}}
+                                <span class="text-sm">Adrese: </span>{{ $lift->city }},
+                                {{ $lift->street }} iela {{ $lift->house }} / {{ $lift->entrance }}
 
                             </div>
                             <div id="controls">
