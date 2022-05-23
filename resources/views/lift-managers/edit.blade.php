@@ -32,6 +32,16 @@
                         <x-button>
                             Save
                         </x-button>
+                        <a href="{{ route('lift-managers.show', $liftManager) }}">
+                            <x-button-info>
+                                Return to details
+                            </x-button-info>
+                        </a>
+                        <a href="{{ route('lift-managers.index', $liftManager) }}">
+                            <x-button-info>
+                                Return to all lift managers list
+                            </x-button-info>
+                        </a>
 
                     </form>
                 </div>

@@ -10,11 +10,11 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="{{ route('lift-managers.index') }}">
                         <h2 class="text-4xl ">
-                            Go to all lift managers list.
+                            {{ $liftManager->name }}
+
                         </h2>
                     </a>
                     <br>
-                    Name: {{ $liftManager->name }} <br>
                     Address: {{ $liftManager->address }} <br>
                     Reg . number: {{ $liftManager->reg_number }}
                     <br><br>
@@ -22,6 +22,11 @@
                         <x-button>
                             Edit
                         </x-button>
+                    </a>
+                    <a href="{{ route('lift-managers.index', $liftManager) }}">
+                        <x-button-info>
+                            Return to all lift managers list
+                        </x-button-info>
                     </a>
 
                 </div>
