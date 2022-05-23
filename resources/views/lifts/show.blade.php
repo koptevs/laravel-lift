@@ -15,13 +15,13 @@
                         </h2>
                     </a>
                     <br>
-                    Reg. Nr.: {{ $lift->reg_number }}<br>
-                    <span class="text-sm">Adrese: </span>{{ $lift->city }},
-                    {{ $lift->street }} iela {{ $lift->house }} / {{ $lift->entrance }}<br>
+                    Reg. Nr.: <span class="text-lg font-bold">{{ $lift->reg_number }}</span><br>
+                    Adrese: <span class="text-lg font-bold">{{ $lift->city }},
+                        {{ $lift->street }} iela {{ $lift->house }} / {{ $lift->entrance }}</span><br>
 
-                    Lift manager: {{ $lift->liftManager->name }}, reg.nr. {{ $lift->liftManager->reg_number }}<br>
-                    Lift type.: {{ $lift->lift_type }}<br>
-                    Manufactured: {{ $lift->manufacture_year }}
+                    Lift manager: <span class="text-lg font-bold">{{ $lift->liftManager->name }}, reg.nr. {{ $lift->liftManager->reg_number }}</span><br>
+                    Lift type.: <span class="text-lg font-bold">{{ $lift->lift_type }}</span><br>
+                    Manufactured: <span class="text-lg font-bold">{{ $lift->manufacture_year }}</span>
                     <br><br>
                     <a href="{{ route('lifts.edit', $lift) }}">
                         <x-button>
