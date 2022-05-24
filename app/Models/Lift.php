@@ -18,13 +18,22 @@ class Lift extends Model
         [
             'lift_manager_id',
             'reg_number',
+            'factory_number',
             'lift_type',
             'manufacturer_name',
             'manufacture_year',
+            'country',
             'city',
             'street',
             'house',
-            'entrance'
+            'postal_code',
+            'entrance',
+            'installer',
+            'load_capacity',
+            'speed',
+            'city_region',
+            'floors_total',
+            'floors_serviced',
         ];
 
 //    public function getRouteKeyName(): string

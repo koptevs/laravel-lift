@@ -12,6 +12,7 @@
                     <form method="post" action="{{ route('lifts.update', $lift)  }}">
                         @method('PUT')
                         @csrf
+{{--                        TODO add fields for new migration - ref create.blade.php--}}
                         Reg. Number:
                         <br/>
                         <input type="text" name="reg_number" value="{{ $lift->reg_number }}">

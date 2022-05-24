@@ -23,8 +23,8 @@
                                 <span class="text-lg font-bold">{{ $lift->reg_number }}</span>
                                 <br>
                                 {{--                                - {{ $lift->liftManager->name }}--}}
-                                <span class="text-sm">Adrese: </span>{{ $lift->city }},
-                                {{ $lift->street }} iela {{ $lift->house }} / {{ $lift->entrance }}
+                                <span class="text-sm">Adrese: </span>
+                                {{ $lift->street }} iela {{ $lift->house }} / {{ $lift->entrance }}, {{ $lift->city }}, {{ $lift->country }}, {{ $lift->postal_code }}
 
                             </div>
                             <div id="controls">

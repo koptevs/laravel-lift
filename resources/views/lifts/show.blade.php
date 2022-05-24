@@ -16,7 +16,7 @@
                     </a>
                     <br>
                     Reg. Nr.: <span class="text-lg font-bold">{{ $lift->reg_number }}</span><br>
-                    Adrese: <span class="text-lg font-bold">{{ $lift->city }},
+                    Adrese: <span class="text-lg font-bold">{{ $lift->country }}, {{ $lift->city }},
                         {{ $lift->street }} iela {{ $lift->house }} / {{ $lift->entrance }}</span><br>
 
                     Lift manager: <span class="text-lg font-bold">{{ $lift->liftManager->name }}, reg.nr. {{ $lift->liftManager->reg_number }}</span><br>

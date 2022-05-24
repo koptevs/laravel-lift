@@ -26,13 +26,18 @@ class LiftController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create():View
+    public function create(): View
     {
 //        app()->setLocale('lv');
         // create form
         $liftManagers = LiftManager::all();
 
-        return view('lifts.create', ['liftManagers' => $liftManagers]);
+        return view('lifts.create', [
+            'liftManagers' => $liftManagers,
+            'liftTypes' => ['elektriskais', 'hidrauliskais'],
+            'cityRegions' => ['Centra rajons', 'Latgales priekšpilsēta', 'Vidzemes priekšpilsēta', 'Ziemeļu priekšpilsēta',
+                'Zemgales priekšpilsēta', 'Kurzemes rajons'],
+        ]);
     }
 
     /**
@@ -50,6 +55,14 @@ class LiftController extends Controller
             'lift_manager_id' => ['required'],
             'lift_type' => ['required'],
             'manufacture_year' => ['required'],
+            'country' => ['required'],
+            'city' => ['required'],
+            'street' => ['required'],
+            'postal_code' => ['required'],
+            'house' => ['required'],
+            'load_capacity' => ['required', 'numeric'],
+            'speed' => ['numeric'],
+
         ]);
 //        dd($validatedRequestData);
         // submit action for the create form
@@ -58,11 +71,22 @@ class LiftController extends Controller
             'lift_manager_id' => $validatedRequestData['lift_manager_id'],
             'lift_type' => $validatedRequestData['lift_type'],
             'manufacture_year' => $validatedRequestData['manufacture_year'],
+            'country' => $validatedRequestData['country'],
+            'city' => $validatedRequestData['city'],
+            'street' => $validatedRequestData['street'],
+            'house' => $validatedRequestData['house'],
+            'postal_code' => $validatedRequestData['postal_code'],
+            'load_capacity' => $validatedRequestData['load_capacity'],
+            'speed' => $validatedRequestData['speed'],
+
             'manufacturer_name' => $request->input('manufacturer_name'),
-            'city' => $request->input('city'),
-            'street' => $request->input('street'),
-            'house' => $request->input('house'),
+            'factory_number' => $request->input('factory_number'),
+            'installer' => $request->input('installer'),
+
+            'city_region' => $request->input('city_region'),
             'entrance' => $request->input('entrance'),
+            'floors_total' => $request->input('floors_total'),
+            'floors_serviced' => $request->input('floors_serviced'),
         ]);
 
         return redirect()->route('lifts.index');
