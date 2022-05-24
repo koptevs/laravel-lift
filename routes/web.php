@@ -18,6 +18,7 @@ use \App\Http\Controllers\LiftManagerController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/proto', [\App\Http\Controllers\ProtokolController::class, 'index']);
 
 //Route::group(['middleware' => ['auth']], function (){
 Route::middleware(['auth'])->group(function () {

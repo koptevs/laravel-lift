@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('inspections', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('lift_id');
+            $table->date('inspection_date');
+            $table->text('protocol_number');
+            $table->text('incpection_notes');
             $table->timestamps();
         });
     }
