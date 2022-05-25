@@ -23,15 +23,23 @@
                             <th class="p-3 text-center">Lifta<br>numurs reģistrā</th>
                             <th class="p-3 text-center">Lifta adrese</th>
                             <th class="p-3 text-center"></th>
+                            <th class="p-3 text-center"></th>
+                            <th class="p-3 text-center"></th>
+                            <th class="p-3 text-center"></th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($inspections as $inspection)
-                            <tr>
-                                <td class="text-center p-2">25.05.2022</td>
+                            <tr @class([
+                                'bg-stone-100' => $loop->even
+                                ])>
+                                <?php
+                                $d = new DateTime($inspection->inspection_date);
+                                ?>
+                                <td class="text-center p-2">{{ $d->format('d.m.Y') }}</td>
                                 <td class="text-center p-2">{{ $inspection->inspection_protocol }}</td>
                                 <td class="text-center p-2">{{ $inspection->lift->reg_number }}</td>
-                                <td class="text-center p-2">{{ $inspection->lift->street }}
+                                <td class="text-left p-2">{{ $inspection->lift->street }}
                                     iela {{ $inspection->lift->house }}
                                     / {{ $inspection->lift->entrance }}, {{ $inspection->lift->city }}
                                     , {{ $inspection->lift->country }}, {{ $inspection->lift->postal_code }}
@@ -44,18 +52,27 @@
                                             Sīkāk
                                         </x-button-info>
                                     </a>
+                                </td>
+                                <td class="text-center pl-1">
+
+
                                     <a href="{{ route('inspections.edit', $inspection) }}">
                                         <x-button>
                                             Redīģēt
                                         </x-button>
                                     </a>
-                                    <form class="inline-block" method="post" action="{{ route('inspections.destroy', $inspection) }}">
+                                </td>
+                                <td class="text-center pl-1">
+                                    <form class="inline-block" method="post"
+                                          action="{{ route('inspections.destroy', $inspection) }}">
                                         @csrf
                                         @method('DELETE')
                                         <x-button-danger onclick="return confirm('Are you sure?')">
                                             Dzēst
                                         </x-button-danger>
                                     </form>
+                                </td>
+                                <td class="text-center pl-1">
                                     <a href="{{ route('proto', $inspection) }}" target="_blank">
                                         <x-button-service>
                                             Protokols
@@ -68,33 +85,31 @@
                     </table>
 
 
+                    {{--                            <div id="controls">--}}
 
-
-                        {{--                            <div id="controls">--}}
-
-                        {{--                                <a href="{{ route('lifts.show', $lift) }}">--}}
-                        {{--                                    <x-button-info>--}}
-                        {{--                                        Show details--}}
-                        {{--                                    </x-button-info>--}}
-                        {{--                                </a>--}}
-                        {{--                                <a href="{{ route('lifts.edit', $lift) }}">--}}
-                        {{--                                    <x-button>--}}
-                        {{--                                        Edit--}}
-                        {{--                                    </x-button>--}}
-                        {{--                                </a>--}}
-                        {{--                                <form class="inline-block" method="post" action="{{ route('lifts.destroy', $lift) }}">--}}
-                        {{--                                    @csrf--}}
-                        {{--                                    @method('DELETE')--}}
-                        {{--                                    <x-button-danger onclick="return confirm('Are you sure?')">--}}
-                        {{--                                        Delete--}}
-                        {{--                                    </x-button-danger>--}}
-                        {{--                                </form>--}}
-                        {{--                            </div>--}}
-                    </div>
-                    <hr>
-
+                    {{--                                <a href="{{ route('lifts.show', $lift) }}">--}}
+                    {{--                                    <x-button-info>--}}
+                    {{--                                        Show details--}}
+                    {{--                                    </x-button-info>--}}
+                    {{--                                </a>--}}
+                    {{--                                <a href="{{ route('lifts.edit', $lift) }}">--}}
+                    {{--                                    <x-button>--}}
+                    {{--                                        Edit--}}
+                    {{--                                    </x-button>--}}
+                    {{--                                </a>--}}
+                    {{--                                <form class="inline-block" method="post" action="{{ route('lifts.destroy', $lift) }}">--}}
+                    {{--                                    @csrf--}}
+                    {{--                                    @method('DELETE')--}}
+                    {{--                                    <x-button-danger onclick="return confirm('Are you sure?')">--}}
+                    {{--                                        Delete--}}
+                    {{--                                    </x-button-danger>--}}
+                    {{--                                </form>--}}
+                    {{--                            </div>--}}
                 </div>
+                <hr>
+
             </div>
         </div>
+    </div>
     </div>
 </x-app-layout>
