@@ -1518,7 +1518,7 @@ class ProtocolController extends Controller
                 $checkbox['y'], $checkbox_image_width, $checkbox_image_height,);
         }
         foreach ($empty_checkboxes as $empty_checkbox) {
-            $pdf->Image('./img/checkbox.png',
+            $pdf->Image('./img/empty_checkbox.png',
                 $empty_checkbox['x'] + $el_merijumi_second_table_col_data_width / 2 - $checkbox_image_width / 2,
                 $empty_checkbox['y'], $checkbox_image_width, $checkbox_image_height,);
         }
