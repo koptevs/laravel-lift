@@ -10,45 +10,61 @@ use Illuminate\Http\Request;
 use tFPDF;
 
 
-class ProtokolController extends Controller
+class ProtocolController extends Controller
 {
-
-
-    private $parbaude = [
-        'parbaude_nr' => '04.45/777-21/02',
-        'parbaude_veids' => 'kārtējā',
-        'parbaude_datums' => '02.11.2021',
-        'parbaude_zimes_nr' => '2337',
-        'parbaude_lifts_reg_nr' => '4CL012058',
-        'parbaude_valditajs' => '1',
-        'parbaude_mehanikis_vards_uzvards' => 'Olegs Jevstratovs',
-        'parbaude_mehanika_kompanija' => 'SIA "KONE Lifti Latvija"',
-        'parbaude_neatbilstibas' => '
-1.4 Mašīntelpas durvīm nav bridinājuma uzraksta "Lifta mašīntelpa - bīstami".
-3.1 Mašīntelpā luka ir bojāta
-1.3 Nevar atslēgt mašīntelpu no iekšpuses bez atslēgas ja tā ir aizverta no ārpuses ar atslēgu.
-3.2 Stiepšanas ierīce ir nolietota.
-3.9 STOP slēdzis šahtas bedrē neatbilst standartiem.
-4.3 Kabīnes grīdas un stāva laukuma grīdas līmeņu starpība ir lelākā par 50mm (15mm)  x stāvos.
-5.2 Palielināta lifta pretsvara brīvkustība vadotnēs (vādkurpju ieliktņi ir nolietoti).',
-    ];
-
-
-    function index()
+    public function __invoke(Inspection $inspection)
     {
-        $inspection = Inspection::first();
+//        dd($inspection);
+//        "lift_id" => 2
+//    "inspection_date" => "2022-05-24"
+//    "inspection_protocol" => "04CL223/12-2022"
+//    "inspection_label" => "2233"
+//    "inspection_result" => "Kārtējā"
+//    "inspection_participant_1_profession" => "Elektroinženieris"
+//    "inspection_participant_1_name" => "Jūris Meistars"
+//    "inspection_participant_2_profession" => "Mehāniķis"
+//    "inspection_participant_2_name" => "Olegs Ivanovs"
+//    "inspection_type" => "Kārtējā"
+//    "incpection_notes" => """
+//        dd($lift);
         $lift = $inspection->lift;
+//     "id" => 2
+//    "lift_manager_id" => 5
+//    "reg_number" => "4CL220796"
+//    "factory_number" => "NR1771"
+//    "lift_type" => "hidrauliskais"
+//    "manufacturer_name" => "KONE"
+//    "manufacture_year" => 1992
+//    "country" => "Latvija"
+//    "city" => "Rīga"
+//    "street" => "Mills Expressway"
+//    "house" => "93"
+//    "postal_code" => "LV-1236"
+//    "entrance" => "I"
+//    "installer" => "SIA Labi Lifti"
+//    "load_capacity" => 400
+//    "speed" => 0.71
+//    "city_region" => "Centra rajons"
+//    "floors_total" => 9
+//    "floors_serviced" => 7
+//    "created_at" => "2022-05-25 07:56:05"
+//    "updated_at" => "2022-05-25 07:56:05"
         $liftManager = $lift->liftManager;
+//        dd($liftManager);
+//        "id" => 5
+//    "name" => "AS Figas"
+//    "address" => """
+//      803 Jalon Ranch
+//      Nicolashire, NC 22014
+//      """
+//    "reg_number" => "58951409771"
+//    "created_at" => "2022-05-25 07:56:05"
+//    "updated_at" => "2022-05-25 07:56:05"
 
         require('Protokol/variables.php');
         require('Protokol/functions.php');
-        require('Protokol/data.php');
-        require('Protokol/data/lifti.php');
-        require('Protokol/data/valditaji.php');
 
-//        dd($inspection);
-
-        $parbaude = $this->parbaude;
+        $parbaude = $inspection;
         $checkboxes = [];
         $empty_checkboxes = [];
 
@@ -56,12 +72,12 @@ class ProtokolController extends Controller
         $lifts = [
             'lifts_reg_nr' => $lift->reg_number,
             'lifts_rupn_nr' => $lift->factory_number,
-            'lifts_uzstaditajs' => $lift->manufacture_name, // TODO add  installer
-            'lifts_uzstadisanas_gads' => (string)$lift->manufacture_year,
+            'lifts_uzstaditajs' => $lift->installer,
+            'lifts_uzstadisanas_gads' => (string) $lift->manufacture_year,
             'lifts_parbaudes_adrese' => $lift->street.' '.$lift->house.'-'.$lift->entrance.', '.$lift->city.', '.$lift->postal_code,
             'lifts_tips' => $lift->lift_type,
-            'lifts_celtspeja' => (string)$lift->load_capacity,
-            'lifts_stavu_skaits' => (string)$lift->floors_total,
+            'lifts_celtspeja' => (string) $lift->load_capacity,
+            'lifts_stavu_skaits' => (string) $lift->floors_total,
         ];
         $valditajs = [
             'valditajs_nosaukums' => $liftManager->name,
@@ -70,7 +86,7 @@ class ProtokolController extends Controller
             'valditajs_liguma_nr' => '6-15/1159', //TODO add fields to migration
             'valditajs_liguma_datums' => '21.04.2020', //TODO add fields to migration
         ];
-        global $pdf;
+        global $pdf; // do not remove!!!
         $pdf = new tFPDF('P', 'mm', 'A4');
 
         $pdf->SetAutoPageBreak(false, 10);
@@ -141,7 +157,7 @@ class ProtokolController extends Controller
         $pdf->SetFont('ArialBoldItalic', '', 10);
         left_padding();
         $pdf->setFillColor(128, 128, 255);
-        $pdf->cell(0, 11, "LIFTA TEHNISKĀS PĀRBAUDES PROTOKOLS Nr. ".$inspection->protocol_number, 0, 1, 'C', false);
+        $pdf->cell(0, 11, "LIFTA TEHNISKĀS PĀRBAUDES PROTOKOLS Nr. ".$inspection->inspection_protocol, 0, 1, 'C', false);
 
         $pdf->Image('./img/latak_logo.jpg', $width - 5, 30, 22,);
 
@@ -1012,7 +1028,7 @@ class ProtokolController extends Controller
 
         $pdf->SetFont('ArialRegular', '', 10);
         left_padding();
-        $pdf->cell(0, 5, "Pielikums pārbaudes protokolam Nr.: ".$parbaude['parbaude_nr'], 0, 1, 'C', false);
+        $pdf->cell(0, 5, "Pielikums pārbaudes protokolam Nr.: ".$inspection->inspection_protocol, 0, 1, 'C', false);
 
 // first table
 

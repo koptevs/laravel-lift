@@ -13,16 +13,23 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Sākums') }}
                     </x-nav-link>
                     @if (auth()->user()->is_admin)
                         <x-nav-link :href="route('lifts.index')" :active="request()->routeIs('lifts.index')">
-                            {{ __('Lifts') }}
+                            {{ __('Lifti') }}
                         </x-nav-link>
+
                         <x-nav-link :href="route('lift-managers.index')"
                                     :active="request()->routeIs('lift-managers.index')">
-                            {{ __('Lift Managers') }}
+                            {{ __('Liftu Pārvaldnieki') }}
                         </x-nav-link>
+
+                        <x-nav-link :href="route('inspections.index')"
+                                    :active="request()->routeIs('inspections.index')">
+                            {{ __('Liftu pārbaudes') }}
+                        </x-nav-link>
+
                     @endif
                 </div>
             </div>
