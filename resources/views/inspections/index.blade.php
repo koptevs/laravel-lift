@@ -13,52 +13,86 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="p-2 bg-white border-b border-gray-200">
 
-                    @foreach($inspections as $inspection)
-                        <div class="mt-2 mb-4 flex justify-between">
-                            <div id="lift-data" class="text-xl">
+                    <table class="table-auto w-full">
+                        <thead class="bg-indigo-50">
+                        <tr>
+                            <th class="p-3 text-center">Pārbaudes<br>datums</th>
+                            <th class="p-3 text-center">Pārbaudes <br>protokola numurs</th>
+                            <th class="p-3 text-center">Lifta<br>numurs reģistrā</th>
+                            <th class="p-3 text-center">Lifta adrese</th>
+                            <th class="p-3 text-center"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($inspections as $inspection)
+                            <tr>
+                                <td class="text-center p-2">25.05.2022</td>
+                                <td class="text-center p-2">{{ $inspection->inspection_protocol }}</td>
+                                <td class="text-center p-2">{{ $inspection->lift->reg_number }}</td>
+                                <td class="text-center p-2">{{ $inspection->lift->street }}
+                                    iela {{ $inspection->lift->house }}
+                                    / {{ $inspection->lift->entrance }}, {{ $inspection->lift->city }}
+                                    , {{ $inspection->lift->country }}, {{ $inspection->lift->postal_code }}
+                                </td>
 
-                                <span class="text-sm">Pārbaudes protokola numurs: </span>
-                                <span class="text-lg font-bold">{{ $inspection->inspection_protocol }}</span>
-                                <br>
 
-                                <span class="text-sm">Lifta adrese: </span>
-                                {{ $inspection->lift->street }} iela {{ $inspection->lift->house }}
-                                / {{ $inspection->lift->entrance }}, {{ $inspection->lift->city }}
-                                , {{ $inspection->lift->country }}, {{ $inspection->lift->postal_code }}
+                                <td class="text-center p-0">
+                                    <a href="{{ route('inspections.show', $inspection) }}">
+                                        <x-button-info>
+                                            Sīkāk
+                                        </x-button-info>
+                                    </a>
+                                    <a href="{{ route('inspections.edit', $inspection) }}">
+                                        <x-button>
+                                            Redīģēt
+                                        </x-button>
+                                    </a>
+                                    <form class="inline-block" method="post" action="{{ route('inspections.destroy', $inspection) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <x-button-danger onclick="return confirm('Are you sure?')">
+                                            Dzēst
+                                        </x-button-danger>
+                                    </form>
+                                    <a href="{{ route('proto', $inspection) }}" target="_blank">
+                                        <x-button-service>
+                                            Protokols
+                                        </x-button-service>
+                                    </a>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
 
-                                <a href="{{ route('proto', $inspection) }}" target="_blank">
-                                    <x-button-info>
-                                        Rādīt protokolu
-                                    </x-button-info>
-                                </a>
 
-                            </div>
-                            {{--                            <div id="controls">--}}
 
-                            {{--                                <a href="{{ route('lifts.show', $lift) }}">--}}
-                            {{--                                    <x-button-info>--}}
-                            {{--                                        Show details--}}
-                            {{--                                    </x-button-info>--}}
-                            {{--                                </a>--}}
-                            {{--                                <a href="{{ route('lifts.edit', $lift) }}">--}}
-                            {{--                                    <x-button>--}}
-                            {{--                                        Edit--}}
-                            {{--                                    </x-button>--}}
-                            {{--                                </a>--}}
-                            {{--                                <form class="inline-block" method="post" action="{{ route('lifts.destroy', $lift) }}">--}}
-                            {{--                                    @csrf--}}
-                            {{--                                    @method('DELETE')--}}
-                            {{--                                    <x-button-danger onclick="return confirm('Are you sure?')">--}}
-                            {{--                                        Delete--}}
-                            {{--                                    </x-button-danger>--}}
-                            {{--                                </form>--}}
-                            {{--                            </div>--}}
-                        </div>
-                        <hr>
 
-                    @endforeach
+                        {{--                            <div id="controls">--}}
+
+                        {{--                                <a href="{{ route('lifts.show', $lift) }}">--}}
+                        {{--                                    <x-button-info>--}}
+                        {{--                                        Show details--}}
+                        {{--                                    </x-button-info>--}}
+                        {{--                                </a>--}}
+                        {{--                                <a href="{{ route('lifts.edit', $lift) }}">--}}
+                        {{--                                    <x-button>--}}
+                        {{--                                        Edit--}}
+                        {{--                                    </x-button>--}}
+                        {{--                                </a>--}}
+                        {{--                                <form class="inline-block" method="post" action="{{ route('lifts.destroy', $lift) }}">--}}
+                        {{--                                    @csrf--}}
+                        {{--                                    @method('DELETE')--}}
+                        {{--                                    <x-button-danger onclick="return confirm('Are you sure?')">--}}
+                        {{--                                        Delete--}}
+                        {{--                                    </x-button-danger>--}}
+                        {{--                                </form>--}}
+                        {{--                            </div>--}}
+                    </div>
+                    <hr>
+
                 </div>
             </div>
         </div>
