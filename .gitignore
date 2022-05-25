@@ -2,7 +2,7 @@
 /public/hot
 /public/storage
 /public/css
-/public/mix-manifest.json
+public/mix-manifest.json
 /storage/*.key
 /storage/clockwork
 /vendor
