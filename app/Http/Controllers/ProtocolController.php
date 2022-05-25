@@ -65,6 +65,10 @@ class ProtocolController extends Controller
         require('Protokol/functions.php');
 
         $parbaude = $inspection;
+
+        global $checkboxes;
+        global $empty_checkboxes;
+
         $checkboxes = [];
         $empty_checkboxes = [];
 
@@ -1518,7 +1522,6 @@ class ProtocolController extends Controller
                 $empty_checkbox['x'] + $el_merijumi_second_table_col_data_width / 2 - $checkbox_image_width / 2,
                 $empty_checkbox['y'], $checkbox_image_width, $checkbox_image_height,);
         }
-// var_dump($checkboxes);
 
 
 // var_dump($parbaude);

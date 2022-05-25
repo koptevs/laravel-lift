@@ -57,14 +57,16 @@ function numbered_string_to_array( $mystr ) {
 	return $result;
 }
 
-function getPositionForCheckbox($pdf) {
+function getPositionForCheckbox() {
 	global $checkboxes;
+	global $pdf;
 	$x = $pdf->GetX();
 	$y = $pdf->GetY();
 	$checkboxes[] = ["x" => $x, "y" => $y];
 }
-function getPositionForEmptyCheckbox($pdf) {
+function getPositionForEmptyCheckbox() {
 	global $empty_checkboxes;
+	global $pdf;
 	$x = $pdf->GetX();
 	$y = $pdf->GetY();
 	$empty_checkboxes[] = ["x" => $x, "y" => $y];
