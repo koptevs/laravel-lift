@@ -19,7 +19,14 @@ class InspectionSeeder extends Seeder
         DB::table('inspections')->insert([
             'lift_id' => '2',
             'inspection_date' => '2022-05-24',
-            'protocol_number' => '04CL223/12-2022',
+            'inspection_protocol' => '04CL223/12-2022',
+            'inspection_label' => '2233',
+            'inspection_result' => 'Kārtējā',
+            'inspection_type' => 'Kārtējā',
+            'inspection_participant_1_name' => 'Jūris Meistars',
+            'inspection_participant_2_name' => 'Olegs Ivanovs',
+            'inspection_participant_1_profession' => 'Elektroinženieris',
+            'inspection_participant_2_profession' => 'Mehāniķis',
             'incpection_notes' => '1.4 Mašīntelpas durvīm nav brīdinājuma uzraksta "Lifta mašīntelpa - bīstami".
 3.1 Mašīntelpā ir aprīkojums, kas nav saistīts ar liftu.
 3.1 Nevar atvērt mašīntelpu no iekšpuses bez atslēgas ja tā ir aizverta no ārpuses ar atslēgu.
