@@ -47,37 +47,35 @@
 
 
                                 <td class="text-center p-0">
-                                    <a href="{{ route('inspections.show', $inspection) }}">
-                                        <x-button-info>
-                                            Sīkāk
-                                        </x-button-info>
-                                    </a>
+
+                                    <x-links.link-info href="{{ route('inspections.show', $inspection) }}">
+                                        Detaļas
+                                    </x-links.link-info>
+
                                 </td>
                                 <td class="text-center pl-1">
 
+                                    <x-links.link-edit href="{{ route('inspections.edit', $inspection) }}">
+                                        Rediģēt
+                                    </x-links.link-edit>
 
-                                    <a href="{{ route('inspections.edit', $inspection) }}">
-                                        <x-button>
-                                            Redīģēt
-                                        </x-button>
-                                    </a>
                                 </td>
                                 <td class="text-center pl-1">
                                     <form class="inline-block" method="post"
                                           action="{{ route('inspections.destroy', $inspection) }}">
                                         @csrf
                                         @method('DELETE')
-                                        <x-button-danger onclick="return confirm('Are you sure?')">
+                                        <x-buttons.button-danger onclick="return confirm('Are you sure?')">
                                             Dzēst
-                                        </x-button-danger>
+                                        </x-buttons.button-danger>
                                     </form>
                                 </td>
                                 <td class="text-center pl-1">
-                                    <a href="{{ route('proto', $inspection) }}" target="_blank">
-                                        <x-button-service>
-                                            Protokols
-                                        </x-button-service>
-                                    </a>
+
+                                    <x-links.link-service href="{{ route('proto', $inspection) }}" target="_blank">
+                                        Protokols
+                                    </x-links.link-service>
+
                                 </td>
                             </tr>
                         @endforeach

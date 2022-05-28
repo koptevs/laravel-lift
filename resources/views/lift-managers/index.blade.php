@@ -1,13 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-4xl text-gray-800 leading-tight text-center">
-            {{ __('All Lift Managers') }}
+            {{ __('Lifta Pārvaldnieki') }}
         </h2>
-        <a href="{{ route('lift-managers.create') }}">
-            <x-button>
-                Add New Lift Manager
-            </x-button>
-        </a>
+            <x-links.link-service href="{{ route('lift-managers.create') }}">
+                Pievienot pārvaldnieku
+            </x-links.link-service>
     </x-slot>
 
     <div class="py-12">
@@ -25,25 +23,22 @@
 
                             <div id="controls">
 
-                                <a href="{{ route('lift-managers.show', $liftManager) }}">
-                                    <x-button-info>
-                                        Show details
-                                    </x-button-info>
-                                </a>
+                                <x-links.link-info href="{{ route('lift-managers.show', $liftManager) }}">
+                                    Detaļas
+                                </x-links.link-info>
 
-                                <a href="{{ route('lift-managers.edit', $liftManager) }}">
-                                    <x-button>
-                                        Edit
-                                    </x-button>
-                                </a>
+                                <x-links.link-edit href="{{ route('lift-managers.edit', $liftManager) }}">
+                                    Rediģēt
+                                </x-links.link-edit>
 
+                                <input type="hidden" class="bg-teal-600">
                                 <form class="inline-block" method="post"
                                       action="{{ route('lift-managers.destroy', $liftManager) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <x-button-danger onclick="return confirm('Are you sure?')">
-                                        Delete
-                                    </x-button-danger>
+                                    <x-buttons.button-danger onclick="return confirm('Are you sure?')">
+                                        Dzēst
+                                    </x-buttons.button-danger>
                                 </form>
                             </div>
                         </div>

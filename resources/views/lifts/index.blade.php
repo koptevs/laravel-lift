@@ -1,13 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-4xl text-gray-800 leading-tight text-center">
-            {{ __('All Lifts') }} <br>
+            {{ __('Lifti') }} <br>
         </h2>
-        <a href="{{ route('lifts.create') }}">
-            <x-button>
-                Add New Lift
-            </x-button>
-        </a>
+        <x-links.link-service href="{{ route('lifts.create') }}">
+            Pievienot liftu
+        </x-links.link-service>
     </x-slot>
 
     <div class="py-12">
@@ -24,27 +22,26 @@
                                 <br>
                                 {{--                                - {{ $lift->liftManager->name }}--}}
                                 <span class="text-sm">Adrese: </span>
-                                {{ $lift->street }} iela {{ $lift->house }} / {{ $lift->entrance }}, {{ $lift->city }}, {{ $lift->country }}, {{ $lift->postal_code }}
+                                {{ $lift->street }} iela {{ $lift->house }} / {{ $lift->entrance }}, {{ $lift->city }}
+                                , {{ $lift->country }}, {{ $lift->postal_code }}
 
                             </div>
                             <div id="controls">
 
-                                <a href="{{ route('lifts.show', $lift) }}">
-                                    <x-button-info>
-                                        Show details
-                                    </x-button-info>
-                                </a>
-                                <a href="{{ route('lifts.edit', $lift) }}">
-                                    <x-button>
-                                        Edit
-                                    </x-button>
-                                </a>
+                                <x-links.link-info href="{{ route('lifts.show', $lift) }}">
+                                    Detaļas
+                                </x-links.link-info>
+
+                                <x-links.link-edit href="{{ route('lifts.edit', $lift) }}">
+                                    Rediģēt
+                                </x-links.link-edit>
+
                                 <form class="inline-block" method="post" action="{{ route('lifts.destroy', $lift) }}">
                                     @csrf
                                     @method('DELETE')
-                                    <x-button-danger onclick="return confirm('Are you sure?')">
-                                        Delete
-                                    </x-button-danger>
+                                    <x-buttons.button-danger onclick="return confirm('Are you sure?')">
+                                        Dzēst
+                                    </x-buttons.button-danger>
                                 </form>
                             </div>
                         </div>
