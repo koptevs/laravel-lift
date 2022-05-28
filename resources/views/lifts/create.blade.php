@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Add a Lift') }}
+            {{ __('Pievienot liftu') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
 
                     <form method="post" action="{{ route('lifts.store')  }}">
                         @csrf
-                        <div class="grid grid-cols md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="grid grid-cols md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                             <div>
                                 <label for="reg_number">Reģistrācijas numurs:</label><br>
                                 <input type="text" id="reg_number" class="w-full" name="reg_number" value="{{ old('reg_number') }}">
@@ -107,7 +107,7 @@
 
                             <div>
                                 <label for="city_region">Pilsētas rajons:</label><br>
-                                <select id="city_region" class="w-full" name="lift_type">
+                                <select id="city_region" class="w-full" name="city_region">
                                     <option  value=""></option>
                                     @foreach($cityRegions as $cityRegion)
                                         <option value="{{ $cityRegion }}"> {{ $cityRegion }}</option>
@@ -119,7 +119,6 @@
                             </div>
 
                             <div>
-
                                 <label for="street"> Ielas nosaukums:</label><br>
                                 <input id="street" class="w-full" type="text" name="street"  value="{{ old('street') }}">
                                 <br/>
@@ -127,8 +126,8 @@
                                 <div class="text-red-600">{{ $message }}</div>
                                 @enderror
                             </div>
-                            <div>
 
+                            <div>
                                 <label for="house"> Ēkas numurs:</label><br>
                                 <input id="house" class="w-full" type="text" name="house"  value="{{ old('house') }}">
                                 <br/>
@@ -174,19 +173,16 @@
                             </div>
 
                             <div>
-
                                 <label for="lift_manager_id"> Lifta pārvaldnieks:</label><br>
                                 <select id="lift_manager_id" class="w-full" name="lift_manager_id" >
                                     <option value=""></option>
                                     @foreach($liftManagers as $liftManager)
                                         <option value="{{ $liftManager->id }}"> {{ $liftManager->name }}</option>
                                     @endforeach
-
                                 </select>
                             </div>
+
                         </div>
-                        <br>
-                        <br>
                         <x-button>
                             Save
                         </x-button>

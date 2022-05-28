@@ -113,12 +113,17 @@ class LiftController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lift $lift)
+    public function edit(Lift $lift): View
     {
         // edit form
         $liftManagers = LiftManager::all();
-
-        return view('lifts.edit', ['lift' => $lift, 'liftManagers' => $liftManagers]);
+        return view('lifts.edit', [
+            'lift' => $lift,
+            'liftManagers' => $liftManagers,
+            'liftTypes' => ['elektriskais', 'hidrauliskais'],
+            'cityRegions' => ['Centra rajons', 'Latgales priekšpilsēta', 'Vidzemes priekšpilsēta', 'Ziemeļu priekšpilsēta',
+                'Zemgales priekšpilsēta', 'Kurzemes rajons'],
+            ]);
     }
 
     /**
