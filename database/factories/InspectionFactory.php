@@ -69,8 +69,7 @@ class InspectionFactory extends Factory
 7.1 Visos stāvos sprauga starp šahtas durvīm un aiļu apmalēm ir lielāka par 10 mm.'
                     ,
 
-                    '
-3.1 Nevar atvērt mašīntelpu no iekšpuses bez atslēgas ja tā ir aizverta no ārpuses ar atslēgu.
+                    '3.1 Nevar atvērt mašīntelpu no iekšpuses bez atslēgas ja tā ir aizverta no ārpuses ar atslēgu.
 3.4 Lifta kabīnes vadības aparāts ir nolietots.
 3.6 Nav vādskriemeļa aizsarga pret trošu noslīdēšanas un svešķermeņu iekļūšanas starp trosēm.
 3.7 Lifta kabīnē nedarbojas zvans (skaņas signalizācijas sistēma).
