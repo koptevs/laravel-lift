@@ -80,6 +80,7 @@
                         <button onclick="alert('Funkcionalitāte vēl izstrādē')" class="bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
                             Pārbaudīt
                         </button>
+{{--                        TODO Implement search functionality on front page--}}
 
                     </div>
                 </form>
