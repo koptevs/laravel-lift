@@ -28,7 +28,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard', [
             'lifts_total' => App\Models\Lift::all()->count(),
-            'lift_managers_total' => App\Models\LiftManager::get()->count()
+            'lift_managers_total' => App\Models\LiftManager::get()->count(),
+            'inspections_total' => \App\Models\Inspection::get()->count()
             ]);
     })->name('dashboard');
 
