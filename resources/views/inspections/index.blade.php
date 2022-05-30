@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-4xl text-gray-800 leading-tight text-center">
             {{ __('Liftu pārbaudes') }} <br>
         </h2>
-        <a href="{{ route('lifts.create') }}">
+        <a href="{{ route('inspections.create') }}">
             <x-button>
                 Pievienot jaunu pārbaudi
             </x-button>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inspection;
+use App\Models\Lift;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -27,7 +28,15 @@ class InspectionController extends Controller
      */
     public function create()
     {
-        //
+        $allLifts = Lift::with('liftManager')->get();
+        $inspectionTypes = [
+            'Pirmreizējā',
+            'Kārtējā',
+            'Ārpuskārtas',
+            'Atkārtotā'
+        ];
+//        dd($lifts);
+        return view('inspections.create', ['inspectionTypes' => $inspectionTypes]);
     }
 
     /**
@@ -38,7 +47,12 @@ class InspectionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lift = Lift::with('liftManager')->where('reg_number', '=', '4CL846939')->first();
+        $liftsLike = Lift::where('reg_number', 'like', '%'.'846'.'%')->get();
+        dd($liftsLike);
+        Inspection::create([
+
+        ]);
     }
 
     /**
@@ -47,9 +61,10 @@ class InspectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Inspection $inspection)
     {
-        //
+//        dd($inspection);
+        return view('inspections.show', ['inspection' => $inspection, 'lift' => $inspection->lift]);
     }
 
     /**
