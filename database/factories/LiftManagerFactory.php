@@ -22,7 +22,7 @@ class LiftManagerFactory extends Factory
                 'Saulespuķu Mājas',
                 'DzIKS Gudgrība',
                 'SIA Naudu Pumpis',
-                'AS Figas',
+                'AS Ērti Nami',
             ]),
             'address' => $this->faker->address(),
             'reg_number' => $this->faker->unique()->numerify('###########')
