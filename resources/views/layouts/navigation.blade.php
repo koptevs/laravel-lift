@@ -15,7 +15,8 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Sākums') }}
                     </x-nav-link>
-                    @if (auth()->user()->is_admin)
+                    {{--                    @if (auth()->user()->is_admin)--}}
+                    @auth
                         <x-nav-link :href="route('lifts.index')" :active="request()->routeIs('lifts.index')">
                             {{ __('Lifti') }}
                         </x-nav-link>
@@ -29,8 +30,8 @@
                                     :active="request()->routeIs('inspections.index')">
                             {{ __('Liftu pārbaudes') }}
                         </x-nav-link>
-
-                    @endif
+                    @endauth
+                    {{--                    @endif--}}
                 </div>
             </div>
 

@@ -28,4 +28,3 @@ $ npm install
 $ npm run dev
 $ php artisan migrate
 ```
-:-( - > Says "Nothing to migrate." after the last command
