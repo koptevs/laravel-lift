@@ -398,7 +398,7 @@ class ProtocolController extends Controller
         $pdf->cell($parbaudes_rezultati_mark_column_width, $parbaudes_rezultati_cell_height,
             !isset($prp["4.1"]) || $is_blank ? "" : "X", 1, 0, 'C', false);
         $pdf->cell($parbaudes_rezultati_mark_column_width, $parbaudes_rezultati_cell_height,
-            !isset($prp["4.1"]) || $is_blank ? "" : "X", 1, 0, 'C', false);
+            !isset($prp["4.1"]) || $is_blank ? "" : "", 1, 0, 'C', false);
         $pdf->cell($parbaudes_rezultati_mark_column_width, $parbaudes_rezultati_cell_height, "", 1, 1, 'C', false);
 // parbaudes rezultati 1 row end
 
